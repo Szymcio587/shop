@@ -1,47 +1,14 @@
 package com.example.shop.reader;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.shop.model.Order;
 
-public class OrderReader {
-
-	public static List<Order> ReadOrders(String filename) {
-		List<Order> orders = new ArrayList<>();
-		String json = "";
-		
-		try {
-			json = OrderReader.ReadFileToString(filename);
-		}
-		catch(IOException exception) {
-			exception.printStackTrace();
-		}
-
-        ConvertStringToOrders(json, orders);
-        
-		return orders;
-	}
+public final class OrderReader extends AbstractReader<Order> {
 	
-	private static String ReadFileToString(String filename) throws FileNotFoundException, IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
-        StringBuilder sb = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            sb.append(line.trim());
-        }
-        reader.close();
-
-        String json = sb.toString();
-
-        return json.substring(1, json.length() - 1);
-	}
-	
-	private static void ConvertStringToOrders(String json, List<Order> orders) {
+	@Override
+	protected void ConvertStringToObjects(String json, List<Order> orders) {
         String[] objectStrings = json.split("\\},\\s*\\{");
 
         for (String obj : objectStrings) {

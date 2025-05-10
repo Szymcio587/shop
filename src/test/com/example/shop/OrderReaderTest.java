@@ -16,9 +16,8 @@ public class OrderReaderTest {
     public void OrderReadingTest() {  
         List<Order> orders = new ArrayList<>();
         
-        orders = OrderReader.ReadOrders("json/orders.json");
-        
-        System.out.print(orders.get(0));
+        OrderReader orderReader = new OrderReader();
+        orders = orderReader.Read("json/orders.json");
         
         if(!orders.isEmpty()) {
         	assertEquals(orders.get(0), new Order("ORDER1", 100, List.of("mZysk")));
