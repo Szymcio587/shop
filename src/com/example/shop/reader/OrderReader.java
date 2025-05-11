@@ -1,5 +1,6 @@
 package com.example.shop.reader;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public final class OrderReader extends AbstractReader<Order> {
                 }
             }
 
-            orders.add(new Order(id, Double.valueOf(value), promotions));
+            orders.add(new Order(id, new BigDecimal(value), promotions));
         }
 	}
 	

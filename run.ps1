@@ -9,7 +9,7 @@ if (-not (Test-Path $binPath)) {
 
 javac -cp $libPath -d $binPath (Get-ChildItem -Path $srcPath -Filter *.java -Recurse).FullName
 
-$ordersFile = "E:\Nauka\Java jest super\Supermarket\json\orders.json" # absolute path
-$paymentsFile = "json\paymentmethods.json" # relative path
+$ordersFile = "json\orders.json"
+$paymentsFile = "json\paymentmethods.json"
 
 java -cp "$binPath" $mainClass "$ordersFile" "$paymentsFile"

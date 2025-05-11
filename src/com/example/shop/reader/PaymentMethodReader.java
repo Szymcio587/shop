@@ -1,5 +1,6 @@
 package com.example.shop.reader;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.example.shop.model.PaymentMethod;
@@ -27,7 +28,7 @@ public final class PaymentMethodReader extends AbstractReader<PaymentMethod> {
             discount = extractValue(obj, discountIndex);
             limit = extractValue(obj, limitIndex);
 
-            paymentMethods.add(new PaymentMethod(id, Double.valueOf(discount), Double.valueOf(limit)));
+            paymentMethods.add(new PaymentMethod(id, new BigDecimal(discount), new BigDecimal(limit)));
         }
 	}
 	

@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.shop.model.Order;
-
 public abstract class AbstractReader<T> {
 	
 	public List<T> Read(String filename) {
